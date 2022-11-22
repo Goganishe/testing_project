@@ -10,8 +10,13 @@ describe('Check Box', () => {
         cy.get('[title="Collapse all"]').click();
     })
     it('Проверка последовательного открытия и закрытия', () => {
-        while (cy.get('have.class', 'rct-node-collapsed')) {
-            cy.get('[class="rct-node rct-node-parent rct-node-collapsed"]').click();
-        }
+        cy.get('li')
+            .should('have.class', 'rct-node-collapsed')
+            .each(($li, index, $lis) => {
+                return $li.click();
+            })
+            .then(($lis) => {
+                expect($lis).to.have.class('rct-node-collapsed')
+            })
     })
 })
