@@ -10,13 +10,11 @@ describe('Check Box', () => {
         cy.get('[title="Collapse all"]').click();
     })
     it('Проверка последовательного открытия и закрытия', () => {
-        cy.get('li')
-            .should('have.class', 'rct-node-collapsed')
-            .each(($li, index, $lis) => {
-                return $li.click();
+        cy.get('svg').should('have.class', 'rct-icon-expand-close').each(($svg, index, $svgs) => {
+                return $svg.click();
             })
-            .then(($lis) => {
-                expect($lis).to.have.class('rct-node-collapsed')
+            .then(($svgs) => {
+                expect($svgs).to.have.class('rct-icon-expand-close');
             })
     })
 })
