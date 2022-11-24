@@ -11,11 +11,6 @@ describe('Check Box', () => {
     })
     //ГОВНО
     it('Проверка последовательного открытия и закрытия', () => {
-        cy.get('svg').should('have.class', 'rct-icon-expand-close').each(($svg, index, $svgs) => {
-                return $svg.click();
-            })
-            .then(($svgs) => {
-                expect($svgs).to.have.class('rct-icon-expand-close');
-            })
+        cy.get('button svg:first-child').contains('.rct-icon-expand-close').click();
     })
 })
