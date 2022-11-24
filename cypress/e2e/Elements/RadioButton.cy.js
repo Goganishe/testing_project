@@ -3,7 +3,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 });
 describe('Text Box', () => {
     it('Переход в нужный раздел', () => {
-        cy.visit('https://demoqa.com/');
+        cy.visit('/');
         cy.get('h5').contains('Elements').click();
         cy.contains('Radio Button').click();
     })

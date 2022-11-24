@@ -3,7 +3,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 });
 describe('Check Box', () => {
     it('Проверка массового открытия и закрытия', () => {
-        cy.visit('https://demoqa.com/');
+        cy.visit('/');
         cy.get('h5').contains('Elements').click();
         cy.contains('Check Box').click();
         cy.get('[title="Expand all"]').click();
