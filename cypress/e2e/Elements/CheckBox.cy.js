@@ -9,6 +9,7 @@ describe('Check Box', () => {
         cy.get('[title="Expand all"]').click();
         cy.get('[title="Collapse all"]').click();
     })
+    //ГОВНО
     it('Проверка последовательного открытия и закрытия', () => {
         cy.get('svg').should('have.class', 'rct-icon-expand-close').each(($svg, index, $svgs) => {
                 return $svg.click();
