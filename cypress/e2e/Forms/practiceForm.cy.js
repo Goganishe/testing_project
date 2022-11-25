@@ -13,18 +13,24 @@ describe('Practice Form', () => {
         cy.get('[placeholder="name@example.com"]').type('bomzh@vik.com');
     })
     it('Тыкаем радиокнопку', () => {
-        cy.get('#gender-radio-3').click();
+        cy.get('[for="gender-radio-3"]').click();
     })
     it('Вводим номер телефона', () => {
         cy.get('#userNumber').type('1212121212');
     })
+    it('Указываем дату рождения', () => {
+        cy.get('#dateOfBirthInput').click();
+        cy.get('.react-datepicker__month-select').select('February').should('have.value', '1');
+        cy.get('.react-datepicker__year-select').select('1995').should('have.value', '1995');
+        cy.get('[class*=day--019]').click();
+    })
     it('Указываем субъекты', () => {
-        cy.get('#subjectsInput').type('Первый и второй объекты');
+        cy.get('#subjectsInput').type('Comput').type('{enter}');
     })
     it('Указываем хобби', () => {
-        cy.get('#hobbies-checkbox-1').click();
-        cy.get('#hobbies-checkbox-2').click();
-        cy.get('#hobbies-checkbox-3').click();
+        cy.get('[for="hobbies-checkbox-1"]').click();
+        cy.get('[for="hobbies-checkbox-2"]').click();
+        cy.get('[for="hobbies-checkbox-3"]').click();
     })
     it('Загружаем пикчу', () => {
         cy.get('#uploadPicture').selectFile('cypress/fixtures/images.jpg');
@@ -32,7 +38,16 @@ describe('Practice Form', () => {
     it('Пишем адрес', () => {
         cy.get('#currentAddress').type('Адрес дом какой то на улице этого как его');
     })
-    it('Пишем адрес', () => {
-        cy.get('#currentAddress').type('Адрес дом какой то на улице этого как его');
+    it('Выбираем штат и город', () => {
+        cy.get('#state').click();
+        cy.get('#react-select-3-option-1').type('{enter}');
+        cy.get('#city').click();
+        cy.get('#react-select-4-option-1').type('{enter}');
+    })
+    it('Отправляем форму', () => {
+        cy.get('#submit').click({ force: true });
+    })
+    it('Закрываем форму', () => {
+        cy.get('#closeLargeModal').click();
     })
 })
