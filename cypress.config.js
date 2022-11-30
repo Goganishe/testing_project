@@ -10,7 +10,8 @@ module.exports = defineConfig({
     "blockHosts": [
       "www.googletagmanager.com",
       "mc.yandex.ru",
-      "www.google.com"
+      "www.google.com",
+      "www.gstatic.com"
     ]
   },
 });

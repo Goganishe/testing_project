@@ -32,14 +32,31 @@ describe('Practice Form', () => {
       .then((_$a) => {
         const items = _$a.toArray()
         return Cypress._.sample(items)
-      }).rightclick({force:true})
+      }).rightclick({ force: true })
 
     // Клик на случайный элемент выбранного элемента верхнего меню
     cy.get('li[itemprop="itemListElement"] a')
       .then((_$li) => {
         const items = _$li.toArray()
         return Cypress._.sample(items)
-      }).click({force:true})
+      }).click({ force: true })
     cy.go('back')
+
+    // Наведение на случайный элемент верхнего меню
+    cy.get('a[class*="js-menu-link"]')
+      .then((_$a) => {
+        const items = _$a.toArray()
+        return Cypress._.sample(items)
+      }).rightclick({ force: true })
+
+    // Клик на случайный элемент выбранного элемента верхнего меню
+    cy.get('li[itemprop="itemListElement"] a')
+      .then((_$li) => {
+        const items = _$li.toArray()
+        return Cypress._.sample(items)
+      }).click({ force: true })
+
+    // Тыкаем по стрелочке в блоке пагинации несколько раз
+    
   })
 })
