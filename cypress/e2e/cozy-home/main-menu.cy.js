@@ -11,7 +11,7 @@ describe('Practice Form', () => {
                 password: 'admin'
             },
         });
-        cy.get('script[src*="metrika"]').invoke('remove');
+
         cy.get('[data-role="city-confirm-accept-btn"]').click();
         /*cy.get('ul>li').each(($el, index, $list) => {
             // $el is a wrapped jQuery element
