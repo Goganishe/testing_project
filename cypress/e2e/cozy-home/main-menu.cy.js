@@ -27,13 +27,14 @@ describe('Practice Form', () => {
       }).click()
     cy.go('back')
 
-    // Наведение на случайный элемент верхнего меню и клик на случайный элемент выбранного элемента верхнего меню
+    // Наведение на случайный элемент верхнего меню
     cy.get('a[class*="js-menu-link"]')
       .then((_$a) => {
         const items = _$a.toArray()
         return Cypress._.sample(items)
-      }).hover()
+      }).rightclick({force:true})
 
+    // Клик на случайный элемент выбранного элемента верхнего меню
     cy.get('li[itemprop="itemListElement"] a')
       .then((_$li) => {
         const items = _$li.toArray()
