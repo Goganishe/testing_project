@@ -1,27 +1,44 @@
 Cypress.on('uncaught:exception', (err, runnable) => {
-    return false;
+  return false;
 });
 describe('Practice Form', () => {
-    it('Переход в нужный раздел', () => {
-        cy.viewport(1920, 1080)
-        cy.visit('https://cozyhome-stage-omni.dclouds.ru/', {
-            auth: 
-            {
-                username: 'admin',
-                password: 'admin'
-            },
-        });
+  it('Переход по случайным разделам', () => {
+    // Выбор нужного разрешения экрана
+    cy.viewport(1920, 1080)
 
-        cy.get('[data-role="city-confirm-accept-btn"]').click();
-        /*cy.get('ul>li').each(($el, index, $list) => {
-            // $el is a wrapped jQuery element
-            if ($el.someMethod() === 'something') {
-              // wrap this element so we can
-              // use cypress commands on it
-              cy.wrap($el).click()
-            } else {
-              // do something else
-            }
-          })*/
-    })
+    // Вход на стейдж и авторизация
+    cy.visit('https://cozyhome-stage-omni.dclouds.ru/', {
+      auth:
+      {
+        username: 'admin',
+        password: 'admin'
+      }
+    });
+
+    // Выбор города
+    cy.get('[data-role="city-confirm-accept-btn"]').click();
+
+    // Клик по случайному разделу и возврат обратно
+    cy.get('a[class*="js-menu-link"]')
+      .should('be.visible')
+      .then((_$a) => {
+        const items = _$a.toArray()
+        return Cypress._.sample(items)
+      }).click()
+    cy.go('back')
+
+    // Наведение на случайный элемент верхнего меню и клик на случайный элемент выбранного элемента верхнего меню
+    cy.get('a[class*="js-menu-link"]')
+      .then((_$a) => {
+        const items = _$a.toArray()
+        return Cypress._.sample(items)
+      }).hover()
+
+    cy.get('li[itemprop="itemListElement"] a')
+      .then((_$li) => {
+        const items = _$li.toArray()
+        return Cypress._.sample(items)
+      }).click({force:true})
+    cy.go('back')
+  })
 })
