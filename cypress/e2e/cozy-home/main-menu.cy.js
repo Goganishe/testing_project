@@ -57,6 +57,6 @@ describe('Practice Form', () => {
       }).click({ force: true })
 
     // Тыкаем по стрелочке в блоке пагинации несколько раз
-    
+    cy.get('a').contains('-chevron-right').click();
   })
 })
